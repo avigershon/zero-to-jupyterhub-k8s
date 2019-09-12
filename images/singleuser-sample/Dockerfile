@@ -12,10 +12,18 @@ USER root
 RUN apt-get update && apt-get install --yes \
     git \
  && rm -rf /var/lib/apt/lists/*
+ 
+RUN apt-get install unzip
 USER $NB_USER
 
 RUN pip install nbgitpuller && \
     jupyter serverextension enable --py nbgitpuller --sys-prefix
+    
+RUN wget https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip
+RUN unzip ijava-1.3.0.zip
+RUN cd ijava-1.3.0
+RUN python3 install.py --sys-prefix
+RUN jupyter kernelspec list
 
 # Uncomment the line below to make nbgitpuller default to start up in JupyterLab
 #ENV NBGITPULLER_APP=lab
