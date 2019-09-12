@@ -20,7 +20,6 @@ RUN pip install nbgitpuller && \
     
 RUN wget https://github.com/SpencerPark/IJava/releases/download/v1.3.0/ijava-1.3.0.zip
 RUN unzip ijava-1.3.0.zip
-RUN cd ijava-1.3.0
 RUN python3 install.py --sys-prefix
 RUN jupyter kernelspec list
 
