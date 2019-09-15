@@ -1,3 +1,5 @@
+FROM maven:3.5-jdk-8
+
 FROM jupyter/base-notebook:8ccdfc1da8d5
 # Built from... https://hub.docker.com/r/jupyter/base-notebook/
 #               https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile
