@@ -13,7 +13,9 @@ RUN apt-get update && apt-get install unzip -y && apt-get install default-jdk -y
     git \
  && rm -rf /var/lib/apt/lists/*
  
-# USER $NB_USER
+RUN usermod -g 0 -o $NB_USER
+
+USER $NB_USER
 
 RUN pip install nbgitpuller && \
     jupyter serverextension enable --py nbgitpuller --sys-prefix
