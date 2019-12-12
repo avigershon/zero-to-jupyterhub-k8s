@@ -27,3 +27,4 @@ RUN jupyter kernelspec list
 #ENV NBGITPULLER_APP=lab
 
 # conda/pip/apt install additional packages here, if desired.
+CMD ["sh","-c", "jupyter notebook --notebook-dir=/home/jovyan --ip=0.0.0.0 --allow-root --port=8888"]
