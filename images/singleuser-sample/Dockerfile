@@ -13,7 +13,11 @@ RUN apt-get update && apt-get install unzip -y && apt-get install default-jdk -y
     git \
  && rm -rf /var/lib/apt/lists/*
  
-# RUN usermod -g 0 -o $NB_USER
+RUN groupadd -g 1000 docker && \
+    usermod -a -G docker jovyan
+
+# Setup sudoers without password:
+ADD sudoers /etc/sudoers
 
 USER $NB_USER
 
