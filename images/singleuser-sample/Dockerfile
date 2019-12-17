@@ -13,6 +13,12 @@ RUN apt-get update && apt-get install unzip -y && apt-get install default-jdk -y
 RUN apt-get install gcc -y
 RUN rm -rf /var/lib/apt/lists/*
 
+RUN groupadd -g 1000 docker && \
+    usermod -a -G docker jovyan
+
+# Setup sudoers without password:
+ADD sudoers /etc/sudoers
+
 USER $NB_USER
 
 RUN pip install nbgitpuller && \
