@@ -10,14 +10,8 @@ FROM jupyter/base-notebook:latest
 # NOTE: git is already available in the jupyter/minimal-notebook image.
 USER root
 RUN apt-get update && apt-get install unzip -y && apt-get install default-jdk -y && apt-get install --yes \
-    git \
+    git && apt-get install gcc \
  && rm -rf /var/lib/apt/lists/*
- 
-RUN groupadd -g 1000 docker && \
-    usermod -a -G docker jovyan
-
-# Setup sudoers without password:
-ADD sudoers /etc/sudoers
 
 USER $NB_USER
 
@@ -33,3 +27,4 @@ RUN jupyter kernelspec list
 #ENV NBGITPULLER_APP=lab
 
 # conda/pip/apt install additional packages here, if desired.
+RUN pip install apache-airflow
