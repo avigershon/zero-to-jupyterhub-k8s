@@ -9,9 +9,9 @@ FROM jupyter/base-notebook:latest
 # Example install of git and nbgitpuller.
 # NOTE: git is already available in the jupyter/minimal-notebook image.
 USER root
-RUN apt-get update && apt-get install unzip -y && apt-get install default-jdk -y && apt-get install --yes \
-    git && apt-get install gcc \
- && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install unzip -y && apt-get install default-jdk -y && apt-get install --yes git
+RUN apt-get install gcc -y
+RUN rm -rf /var/lib/apt/lists/*
 
 USER $NB_USER
 
